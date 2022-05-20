@@ -8,29 +8,20 @@ export const CHAT_ROOM_API = (chat_room_id: number) =>
   `${BASE_URL}/v1/users/chatting/${chat_room_id}`;
 
 // Profile Page
-export const LOGOUT_API = 'http://13.209.18.253:8080/logout';
-// export const LOGOUT_API = `${BASE_URL}/logout`;
 export const USER_DATA_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/${user_id}`;
-// export const USER_DATA_API = (user_id: number) =>
-//   `${BASE_URL}/v1/users/${user_id}`;
 export const MY_VIDEOS_API = (user_id: number) =>
-  `http://13.209.18.253:8080/v1/users/${user_id}/videos`;
+  `http://13.209.18.253:8080/v1/users/${user_id}/videos?`;
 export const MY_LIKES_API = (user_id: number) =>
-  `http://13.209.18.253:8080/v1/users/${user_id}/likes`;
-// export const MY_VIDEOS_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/videos`;
-// export const MY_LIKES_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/likes}`;
+  `http://13.209.18.253:8080/v1/users/${user_id}/likes?`;
 export const FOLLOWING_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/following/from?from_member=${user_id}`;
 export const FOLLOWER_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/following/to?to_member=${user_id}`;
 
 // Video
-// export const VIDEO_ITEM_API = (video_id: number) =>
-//   `${BASE_URL}/v1/videos/${video_id}`;
 export const VIDEO_ITEM_API = (video_id: number) =>
   `http://13.209.18.253:8080/v1/videos/${video_id}`;
-// export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 export const VIDEO_LIST_API = 'http://13.209.18.253:8080/v1/videos';
 export const USERS_VIDEO_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/${user_id}/videos?last_id=`;
@@ -39,7 +30,7 @@ export const USERS_VIDEO_API = (user_id: number) =>
 export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
   `http://13.209.18.253:8080/v1/videos/status-condition?sortBy=${sortBy}`;
 export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
-  `http://13.209.18.253:8080/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
+  `http://13.209.18.253:8080/v1/videos/search-condition?keyword=${keyword}&sortBy=${sortBy}&`;
 
 // Login Page
 export const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
