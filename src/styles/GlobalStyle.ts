@@ -4,54 +4,6 @@ import reset from 'styled-reset';
 const GlobalStyle = createGlobalStyle`
   ${reset};
 
-  @font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 100;
-  src: url("/fonts/AppleSDGothicNeoL.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 200;
-  src: url("fonts/AppleSDGothicNeoUL.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 300;
-  src: url("fonts/AppleSDGothicNeoL.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 400;
-  src: url("fonts/AppleSDGothicNeoR.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 500;
-  src: url("fonts/AppleSDGothicNeoM.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 600;
-  src: url("fonts/AppleSDGothicNeoSB.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 700;
-  src: url("fonts/AppleSDGothicNeoB.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 800;
-  src: url("fonts/AppleSDGothicNeoEB.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 900;
-  src: url("fonts/AppleSDGothicNeoH.ttf") format('truetype');
-}
-
   * {
     box-sizing: border-box;
   }
@@ -59,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     color: ${({ theme }) => theme.color.text};
     background: #f1f1f1;
-    font-family: 'Apple SD Gothic Neo', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   html, body, #root{
     height: 100%;
@@ -83,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
   }
   
   ::-webkit-scrollbar { display: none; }
-
 `;
 
 export default GlobalStyle;
