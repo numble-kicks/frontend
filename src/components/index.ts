@@ -55,6 +55,7 @@ export { VideoDataTable } from './Admin/VideoDataTable/VideoDataTable';
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';
 
 // Login
+export { GoogleLogin } from './Login/GoogleLogin/GoogleLogin';
 export { KakaoLogin } from './Login/KakaoLogin/KakaoLogin';
 export { KakaoRedirectHandler } from './Login/KakaoLogin/KakaoRedirectHandler';
 
