@@ -120,8 +120,8 @@ export const VideoUploadPage = () => {
                 value={desc}
               />
             </InputBox>
+            <S.SubmitButton>등록하기</S.SubmitButton>
           </S.MainContainer>
-          <S.SubmitButton>등록하기</S.SubmitButton>
         </S.Form>
       </S.Wrap>
     </AppContainer>

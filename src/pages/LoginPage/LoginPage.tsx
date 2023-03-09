@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin, KakaoLogin, PageHeader } from 'components';
+import { GoogleLogin, KakaoLogin } from 'components';
 import * as S from './styles';
 
 export const LoginPage = () => {
@@ -12,16 +12,13 @@ export const LoginPage = () => {
   });
 
   return (
-    <>
-      <PageHeader backTo="/" title="Sign In" />
-      <S.Wrap>
-        <S.Overlay />
-        <S.Logo>KICKS</S.Logo>
-        <S.Buttons>
-          <KakaoLogin />
-          <GoogleLogin />
-        </S.Buttons>
-      </S.Wrap>
-    </>
+    <S.Wrap>
+      <S.Overlay />
+      <S.Logo>KICKS</S.Logo>
+      <S.Buttons>
+        <KakaoLogin />
+        <GoogleLogin />
+      </S.Buttons>
+    </S.Wrap>
   );
 };

@@ -10,11 +10,11 @@ export const Wrap = styled.div`
 
 export const Form = styled.form`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 50px);
 `;
 
 export const MainContainer = styled.div`
-  height: 675px;
+  height: 100%;
   overflow: scroll;
   padding: 20px;
 `;
@@ -22,19 +22,16 @@ export const MainContainer = styled.div`
 export const FileInputContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 0 13px;
-  margin-bottom: 20px;
+  justify-content: space-around;
+  margin-bottom: 40px;
 `;
 
 export const SubmitButton = styled.button`
   width: 100%;
-  height: 70px;
-  position: absolute;
-  z-index: 200;
-  bottom: 0;
-  left: 0;
-  background-color: #c13128;
+  height: 45px;
+  font-size: 15px;
+  border-radius: 5px;
   color: white;
-  font-size: 16px;
+  background-color: #c13128;
+  margin-bottom: 30px;
 `;

@@ -32,16 +32,29 @@ export const MenuItem = styled.li`
     font-size: 11px;
     font-weight: 600;
     text-align: center;
-    opacity: 0.6;
 
     .icon {
       width: 22px;
       height: 22px;
-      /* margin-bottom: 8px; */
+    }
+
+    span {
+      margin-top: 5px;
+      color: #bbb;
+    }
+
+    svg > *:last-child:not(rect + path) {
+      fill: #bbb;
     }
 
     &.active {
-      opacity: 1;
+      span {
+        color: #af2732;
+      }
+      svg > *:last-child {
+        fill: #af2732;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      }
     }
   }
 `;

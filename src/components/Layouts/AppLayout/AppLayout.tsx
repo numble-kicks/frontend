@@ -6,14 +6,18 @@ import { ReactComponent as SearchIcon } from 'assets/svg/searchbar.svg';
 import { ReactComponent as UploadIcon } from 'assets/svg/upload.svg';
 import * as S from './styles';
 
-export const AppLayout = () => {
+interface Props {
+  navbar: boolean;
+}
+
+export const AppLayout = ({ navbar }: Props) => {
   const username = localStorage.getItem('name');
   const userId = localStorage.getItem('id');
 
   const menuList = [
     { name: '홈', linkTo: '/', component: <HomeIcon /> },
     { name: '검색', linkTo: '/search', component: <SearchIcon /> },
-    { name: '업로드', linkTo: '/upload', component: <UploadIcon /> },
+    { name: '', linkTo: '/upload', component: <UploadIcon /> },
     { name: '채팅', linkTo: '/chats', component: <ChatIcon /> },
     {
       name: '프로필',
@@ -25,20 +29,22 @@ export const AppLayout = () => {
   return (
     <S.AppContainer>
       <Outlet />
-      <S.MainNavigation>
-        {menuList.map((menu, i) => (
-          <S.MenuItem key={i}>
-            <NavLink
-              to={menu.linkTo}
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              state={{ userId: userId }}
-            >
-              <div className="icon">{menu.component}</div>
-              {/* <span>{menu.name}</span> */}
-            </NavLink>
-          </S.MenuItem>
-        ))}
-      </S.MainNavigation>
+      {navbar && (
+        <S.MainNavigation>
+          {menuList.map((menu, i) => (
+            <S.MenuItem key={i}>
+              <NavLink
+                to={menu.linkTo}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                state={{ userId: userId }}
+              >
+                <div className="icon">{menu.component}</div>
+                {menu.name && <span>{menu.name}</span>}
+              </NavLink>
+            </S.MenuItem>
+          ))}
+        </S.MainNavigation>
+      )}
     </S.AppContainer>
   );
 };

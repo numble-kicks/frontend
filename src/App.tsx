@@ -26,7 +26,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         {/* with Navigation */}
-        <Route path="/" element={<AppLayout />}>
+        <Route path="/" element={<AppLayout navbar={true} />}>
           <Route path="/chats" element={<P.ChatListPage />} />
           <Route path="/notice" element={<P.NotificationPage />} />
           <Route index element={<P.MainPage />} />
@@ -35,16 +35,18 @@ function App() {
           <Route path="search_result" element={<P.SearchResultPage />} />
           <Route path="/:username/:follow/" element={<P.FollowPage />} />
           <Route path="/video/:videoId" element={<P.PlayPage />} />
-          <Route path="/login" element={<P.LoginPage />} />
           <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
         </Route>
 
         {/* without Navigation */}
-        <Route path="/upload" element={<P.VideoUploadPage />} />
-        <Route path="/onboard" element={<P.OnBoardingPage />} />
-        <Route path="/onboard/profile" element={<P.NewProfilePage />} />
-        <Route path="/profile/edit" element={<P.ProfileEditPage />} />
-        <Route path="/chat/:id" element={<P.ChatRoomPage />} />
+        <Route path="/" element={<AppLayout navbar={false} />}>
+          <Route path="/login" element={<P.LoginPage />} />
+          <Route path="/upload" element={<P.VideoUploadPage />} />
+          <Route path="/onboard" element={<P.OnBoardingPage />} />
+          <Route path="/onboard/profile" element={<P.NewProfilePage />} />
+          <Route path="/profile/edit" element={<P.ProfileEditPage />} />
+          <Route path="/chat/:id" element={<P.ChatRoomPage />} />
+        </Route>
 
         {/* Admin Page (Web) */}
         <Route path="/admin" element={<AdminLayout />}>
