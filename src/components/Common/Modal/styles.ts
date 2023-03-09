@@ -8,7 +8,8 @@ export const Overlay = styled.div<{ isOpen?: boolean }>`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 375px;
+  width: 100%;
+  max-width: 390px;
   height: 100vh;
   background: rgba(213, 213, 213, 0.85);
   z-index: 1000;

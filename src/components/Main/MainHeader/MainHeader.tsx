@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import * as S from './styles';
 import { ReactComponent as AlertIcon } from 'assets/svg/alert.svg';
-import isLogin from 'utils/isLogin';
-import { LoginModalState } from 'recoil/atom';
+import * as S from './styles';
 
 interface Props {
   active: boolean;
@@ -12,16 +9,9 @@ interface Props {
 }
 
 export const MainHeader = ({ active, setActive }: Props) => {
-  const setIsLoginModalOpen = useSetRecoilState(LoginModalState);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLElement;
     setActive(btn.innerText === '추천');
-  };
-
-  const handleNotificationClick = () => {
-    if (!isLogin()) {
-      setIsLoginModalOpen(true);
-    }
   };
 
   return (
@@ -34,8 +24,8 @@ export const MainHeader = ({ active, setActive }: Props) => {
           추천
         </button>
       </S.Category>
-      <Link to={isLogin() ? '/notice' : '#'}>
-        <S.Notification onClick={handleNotificationClick}>
+      <Link to={'/notice'}>
+        <S.Notification>
           <AlertIcon className="icon" />
         </S.Notification>
       </Link>

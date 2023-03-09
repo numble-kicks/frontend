@@ -3,17 +3,19 @@ import styled from 'styled-components';
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 375px;
-  margin: 0 auto;
+  width: 100%;
   height: 100%;
+  max-width: 390px;
+  margin: 0 auto;
   background: #fff;
+  overflow: hidden;
 `;
 
 export const MainNavigation = styled.ul`
   min-height: 70px;
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid #86878b;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
 `;
 
 export const MenuItem = styled.li`
@@ -35,7 +37,7 @@ export const MenuItem = styled.li`
     .icon {
       width: 22px;
       height: 22px;
-      margin-bottom: 8px;
+      /* margin-bottom: 8px; */
     }
 
     &.active {

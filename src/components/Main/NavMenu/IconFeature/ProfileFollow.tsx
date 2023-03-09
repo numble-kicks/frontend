@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import * as S from './styles';
-import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
-import { FOLLOW_API } from 'utils/api';
-import { IUser } from 'types';
+
 import { ProfileImage } from 'components';
-import isLogin from 'utils/isLogin';
+import { IUser } from 'types';
+import axios from 'axios';
+
+import { FOLLOW_API } from 'utils/api';
 import { useFollow } from 'hooks/useFollow';
+
+import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
+import * as S from './styles';
 
 interface Props {
   userData: IUser;
@@ -20,7 +22,7 @@ export const ProfileFollow = ({ userData }: Props) => {
     useFollow();
 
   useEffect(() => {
-    isLogin() && checkFollow(id);
+    checkFollow(id);
   }, [checkFollow, id]);
 
   const handleFollow = () => {
@@ -54,7 +56,7 @@ export const ProfileFollow = ({ userData }: Props) => {
       <Link to={`/${name}`} state={{ userId: id }}>
         <ProfileImage size="48" url={profile_image_url} />
       </Link>
-      {isLogin() && !isFollowed && !isMyProfile && (
+      {!isFollowed && !isMyProfile && (
         <FollowIcon
           className="follow"
           onClick={handleFollow}

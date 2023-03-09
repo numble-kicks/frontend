@@ -1,75 +1,63 @@
-import { Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import GlobalStyle from 'styles/GlobalStyle';
-import defaultTheme from 'styles/DefaultTheme';
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
 import {
   AdminLayout,
   AppLayout,
   ContentsEdit,
-  KakaoRedirectHandler,
-  LoginModal,
-  PrivateRoute
+  KakaoRedirectHandler
 } from 'components';
-import {
-  AdminUserPage,
-  AdminContentPage,
-  AdminDashBoard,
-  ChatListPage,
-  ChatRoomPage,
-  MainPage,
-  ProfilePage,
-  SearchPage,
-  VideoUploadPage,
-  OnBoardingPage,
-  SearchResultPage,
-  LoginPage,
-  FollowPage,
-  PlayPage,
-  NotificationPage,
-  ProfileEditPage,
-  NewProfilePage
-} from 'pages';
+import * as P from 'pages';
+
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from 'styles/GlobalStyle';
+import defaultTheme from 'styles/DefaultTheme';
 
 function App() {
+  const navigate = useNavigate();
+  const isLoggedIn = !!sessionStorage.getItem('kicks-user');
+
+  useEffect(() => {
+    if (!isLoggedIn) navigate('/login');
+  });
+
   return (
-    <>
-      <ThemeProvider theme={defaultTheme}>
-        <GlobalStyle />
-        <LoginModal />
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route path="/" element={<PrivateRoute />}>
-              <Route path="/chats" element={<ChatListPage />} />
-              <Route path="/notice" element={<NotificationPage />} />
-            </Route>
-            <Route index element={<MainPage />} />
-            <Route path="/:username" element={<ProfilePage />} />
-            <Route path="search" element={<SearchPage />} />
-            <Route path="search_result" element={<SearchResultPage />} />
-            <Route path="/:username/:follow/" element={<FollowPage />} />
-            <Route path="/video/:videoId" element={<PlayPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
-          </Route>
-          <Route path="/" element={<PrivateRoute />}>
-            <Route path="/upload" element={<VideoUploadPage />} />
-            <Route path="/onboard" element={<OnBoardingPage />} />
-            <Route path="/onboard/profile" element={<NewProfilePage />} />
-            <Route path="/profile/edit" element={<ProfileEditPage />} />
-            <Route path="/chat/:id" element={<ChatRoomPage />} />
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route path="contents" element={<AdminContentPage />} />
-              <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
-              <Route path="users" element={<AdminUserPage />} />
-              <Route
-                path="users/dashboard/:userId"
-                element={<AdminDashBoard />}
-              />
-            </Route>
-          </Route>
-        </Routes>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <Routes>
+        {/* with Navigation */}
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/chats" element={<P.ChatListPage />} />
+          <Route path="/notice" element={<P.NotificationPage />} />
+          <Route index element={<P.MainPage />} />
+          <Route path="/:username" element={<P.ProfilePage />} />
+          <Route path="search" element={<P.SearchPage />} />
+          <Route path="search_result" element={<P.SearchResultPage />} />
+          <Route path="/:username/:follow/" element={<P.FollowPage />} />
+          <Route path="/video/:videoId" element={<P.PlayPage />} />
+          <Route path="/login" element={<P.LoginPage />} />
+          <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
+        </Route>
+
+        {/* without Navigation */}
+        <Route path="/upload" element={<P.VideoUploadPage />} />
+        <Route path="/onboard" element={<P.OnBoardingPage />} />
+        <Route path="/onboard/profile" element={<P.NewProfilePage />} />
+        <Route path="/profile/edit" element={<P.ProfileEditPage />} />
+        <Route path="/chat/:id" element={<P.ChatRoomPage />} />
+
+        {/* Admin Page (Web) */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="contents" element={<P.AdminContentPage />} />
+          <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
+          <Route path="users" element={<P.AdminUserPage />} />
+          <Route
+            path="users/dashboard/:userId"
+            element={<P.AdminDashBoard />}
+          />
+        </Route>
+      </Routes>
+    </ThemeProvider>
   );
 }
 
