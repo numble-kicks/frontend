@@ -6,15 +6,15 @@ import * as S from './styles';
 export const PlayPage = () => {
   const [active, setActive] = useState(true);
   const { videoId } = useParams();
-	console.log(videoId);
+  console.log(videoId);
 
   return (
     <S.Wrap>
-      <ContentsWrap
+      {/* <ContentsWrap
         videoId={Number(videoId)}
         active={active}
         setActive={setActive}
-      />
+      /> */}
     </S.Wrap>
   );
 };
