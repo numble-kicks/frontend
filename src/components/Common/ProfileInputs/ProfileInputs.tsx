@@ -3,18 +3,23 @@ import * as S from './styles';
 import { BsCameraFill } from 'react-icons/bs';
 
 interface Props {
-  newImage: { url: string; file: File };
-  newName: string;
-  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  image: string;
+  setName: (name: string) => void;
+  setImage: (imageURL: string) => void;
 }
 
-export const ProfileInputs = ({
-  newImage,
-  newName,
-  handleImageChange,
-  handleNameChange
-}: Props) => {
+export const ProfileInputs = ({ name, image, setName, setImage }: Props) => {
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target?.files) return;
+    const file = e.target.files[0];
+    setImage(URL.createObjectURL(file));
+  };
+
   return (
     <S.InputContainer>
       <input
@@ -24,14 +29,14 @@ export const ProfileInputs = ({
         onChange={handleImageChange}
       />
       <S.ImageInput htmlFor="profile">
-        <ProfileImage size="140" url={newImage.url || ''} />
+        <ProfileImage size="140" url={image || ''} />
         <label htmlFor="profile">
           <BsCameraFill />
         </label>
       </S.ImageInput>
       <S.NameInput
         type="text"
-        value={newName || ''}
+        value={name || ''}
         onChange={handleNameChange}
         autoFocus
       />

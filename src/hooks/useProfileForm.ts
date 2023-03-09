@@ -8,7 +8,7 @@ export const useProfileForm = (userData: IUserData) => {
   const [newName, setNewName] = useState('');
   const [newImage, setNewImage] = useState<any>({ url: '', file: '' });
   const isUpdated =
-    newImage.url !== userData?.profile_image_url || newName !== userData?.name;
+    newImage.url !== userData?.photoURL || newName !== userData?.name;
   const navigate = useNavigate();
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,43 +30,15 @@ export const useProfileForm = (userData: IUserData) => {
     formData.append('file', newImage.file);
 
     if (isUpdated || newName) {
-      axios
-        .all([
-          // axios({
-          //   method: 'post',
-          //   url: EDIT_IMAGE_API,
-          //   data: formData,
-          //   headers: {
-          //     'Content-Type': 'multipart/form-data',
-          //     Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-          //   }
-          // }),
-          axios({
-            method: 'put',
-            url: EDIT_NAME_API,
-            data: {
-              name: newName
-            },
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-            }
-          })
-        ])
-        .then(() => {
-          localStorage.setItem('name', newName);
-          navigate(`/${newName}`);
-        })
-        .catch(error => {
-          console.log(...formData);
-          console.log(error);
-        });
+      localStorage.setItem('name', newName);
+      navigate(`/${newName}`);
     }
   };
 
   useEffect(() => {
     setNewName(userData?.name);
-    setNewImage({ url: userData?.profile_image_url, file: {} });
-  }, [userData?.name, userData?.profile_image_url]);
+    setNewImage({ url: userData?.photoURL, file: {} });
+  }, [userData?.name, userData?.photoURL]);
 
   return {
     newName,

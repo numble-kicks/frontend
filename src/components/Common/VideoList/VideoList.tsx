@@ -17,12 +17,12 @@ export const VideoList = ({ message, api }: Props) => {
   const scrollbarRef = useRef<Scrollbars>(null);
   // const scrollHeight = useRef(0);
 
-  const { data } = useSWR(
-    `${api}last_id=${lastVideoId.current}`,
-    fetcherWithToken
-  );
+  // const { data } = useSWR(
+  //   `${api}last_id=${lastVideoId.current}`,
+  //   fetcherWithToken
+  // );
 
-  const videoData = data?.data as IVideoListItem[];
+  // const videoData = data?.data as IVideoListItem[];
 
   // if (videoData) {
   //   if (!videoRef.current.find(x => x.id === videoData[0]?.id)) {
@@ -50,7 +50,7 @@ export const VideoList = ({ message, api }: Props) => {
 
   return (
     <S.VideoContent>
-      {videoData &&
+      {/* {videoData &&
         (videoData.length > 0 ? (
           <Scrollbars autoHide ref={scrollbarRef}>
             {videoData.map(({ id, thumbnail_url }) => (
@@ -59,15 +59,14 @@ export const VideoList = ({ message, api }: Props) => {
               </S.VideoLink>
             ))}
           </Scrollbars>
-        ) : (
-          <S.MessageContent>
-            <img
-              src="https://static.thenounproject.com/png/3255444-200.png"
-              alt="novideo"
-            />
-            <p>{message}</p>
-          </S.MessageContent>
-        ))}
+        ) :)} */}
+      <S.MessageContent>
+        <img
+          src="https://static.thenounproject.com/png/3255444-200.png"
+          alt="novideo"
+        />
+        <p>{message}</p>
+      </S.MessageContent>
     </S.VideoContent>
   );
 };

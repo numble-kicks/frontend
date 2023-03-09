@@ -11,20 +11,20 @@ interface Props {
 export const MainHeader = ({ active, setActive }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLElement;
-    setActive(btn.innerText === '추천');
+    setActive(btn.innerText === 'Popular');
   };
 
   return (
     <S.Header>
       <S.Category>
         <button onClick={handleClick} className={active ? '' : 'active'}>
-          팔로잉
+          Follower
         </button>
         <button onClick={handleClick} className={active ? 'active' : ''}>
-          추천
+          Popular
         </button>
       </S.Category>
-      <Link to={'/notice'}>
+      <Link to="#">
         <S.Notification>
           <AlertIcon className="icon" />
         </S.Notification>

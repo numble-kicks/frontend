@@ -105,7 +105,7 @@ export const ChatRoomPage = () => {
     <AppContainer>
       <PageHeader title={userData?.name} backTo="/chats" />
       {userData ? (
-        <MessageList roomId={room?.id} profile={userData?.profile_image_url} />
+        <MessageList roomId={room?.id} profile={userData?.photoURL} />
       ) : (
         <Loading />
       )}

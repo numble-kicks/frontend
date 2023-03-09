@@ -28,12 +28,12 @@ export const NewProfilePage = () => {
     <AppContainer>
       <Header>프로필 사진과 닉네임을 입력해주세요</Header>
       <S.EditForm onSubmit={handleSubmit}>
-        <ProfileInputs
+        {/* <ProfileInputs
           newImage={newImage}
           newName={newName}
           handleImageChange={handleImageChange}
           handleNameChange={handleNameChange}
-        />
+        /> */}
         <Buttons>
           <Button>
             <Link to="/">다음에 할게요</Link>

@@ -9,4 +9,5 @@ export const Wrap = styled.div`
   .swiper-slide {
     height: 100% !important;
   }
+  position: relative;
 `;

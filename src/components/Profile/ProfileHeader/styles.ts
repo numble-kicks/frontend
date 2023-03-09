@@ -6,7 +6,7 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0 50px;
+  margin: 50px 0;
 
   .profile-username {
     margin-top: 10px;

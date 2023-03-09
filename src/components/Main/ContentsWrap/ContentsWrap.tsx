@@ -20,7 +20,6 @@ export const ContentsWrap = ({
 
   return (
     <S.Wrap>
-      <C.MainHeader active={active} setActive={setActive} />
       <C.VideoPlayer video_url={videoData.video_url} />
       {type === 'delete' &&
       videoData.user.name === localStorage.getItem('name') ? (

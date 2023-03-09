@@ -13,7 +13,7 @@ export interface IUserData {
   id: number;
   last_login_date: string;
   name: string;
-  profile_image_url: any;
+  photoURL: any;
   videos: number;
 }
 

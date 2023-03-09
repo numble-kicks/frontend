@@ -10,7 +10,7 @@ export const Header = styled.div`
 export const Category = styled.div`
   display: inline-block;
   padding: 0 5px;
-  left: 33%;
+  left: 30%;
   position: absolute;
 
   button {
@@ -21,7 +21,6 @@ export const Category = styled.div`
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
     padding: 0 10px;
     position: relative;
-    &:hover,
     &.active {
       color: #f3f3f3;
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);

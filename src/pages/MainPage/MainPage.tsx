@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { ContentsWrap } from 'components';
+import { ContentsWrap, MainHeader } from 'components';
 import { getVideos } from 'utils/getVideos';
 import { IVideoItem } from 'types';
 
@@ -23,6 +23,7 @@ export const MainPage = () => {
 
   return (
     <S.Wrap>
+      <MainHeader active={active} setActive={setActive} />
       <Swiper direction="vertical">
         {videoList?.map(video => (
           <SwiperSlide key={video.id}>
