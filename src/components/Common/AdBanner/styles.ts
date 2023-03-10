@@ -13,6 +13,12 @@ export const AdBannerContainer = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 8px;
+  font-size: 17px;
+  top: 4px;
   right: 8px;
+  z-index: 1000;
+  background: #333;
+  color: #fff;
+  padding: 0 5px;
+  opacity: 0.8;
 `;

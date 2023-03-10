@@ -12,7 +12,11 @@ export const SearchResultPage = () => {
   return (
     <S.Wrap>
       <PageHeader title={searchedText} backTo="/search" />
-      <AdBanner height="110px" />
+      <AdBanner
+        height="100px"
+        src="https://user-images.githubusercontent.com/68415905/224191061-afacedc6-d2af-4aba-b32a-3b3159f86a32.JPG"
+        href="https://thefitville.com/"
+      />
       <S.SortByList>
         {['최신순', '인기순'].map((sortBy, i) => (
           <li
