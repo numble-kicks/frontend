@@ -22,7 +22,7 @@ export const MainPage = () => {
 
       setTimeout(() => {
         setLoading(false);
-      }, 3000);
+      }, 2500);
     };
     fetcher();
   }, []);

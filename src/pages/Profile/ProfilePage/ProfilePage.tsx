@@ -12,7 +12,7 @@ export const ProfilePage = () => {
   const { myData, myName } = getMyData();
   const [currentUser, setCurrentUser] = useState<IUser>();
 
-  const isMyPage = username === myName.toLowerCase().replace(/ /g, '');
+  const isMyPage = username === (myName || '').toLowerCase().replace(/ /g, '');
 
   console.log(currentUser);
 

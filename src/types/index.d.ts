@@ -41,7 +41,7 @@ export interface IChat {
 
 export interface IVideoListItem {
   id: number;
-  thumbnail_url: string;
+  url: string;
 }
 
 export interface IVideoItem {

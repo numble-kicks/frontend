@@ -25,14 +25,14 @@ export const HistoryList = ({
     <S.Overlay onClick={hideHistory}>
       <S.HistoryListContainer onClick={e => e.stopPropagation()}>
         <S.Title>
-          최근검색어
+          Search History
           {history.length !== 0 && (
             <S.Reset onClick={resetHistory}>Clear</S.Reset>
           )}
         </S.Title>
 
         {history.length === 0 ? (
-          <S.EmptyHistory>최근 검색어 내역이 없습니다.</S.EmptyHistory>
+          <S.EmptyHistory>There is no recent searched keyword.</S.EmptyHistory>
         ) : (
           <S.HistoryContent>
             {history.map((keyword, i) => (

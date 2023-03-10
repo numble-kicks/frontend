@@ -43,7 +43,7 @@ export const AdminContentPage = () => {
             <ContentsItem
               key={item.id}
               id={item.id}
-              thumbnail_url={item.thumbnail_url}
+              thumbnail_url={item.url}
               title="sneakers"
               nickname="Rachel"
               column={column}

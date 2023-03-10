@@ -44,8 +44,8 @@ export const SearchPage = () => {
         src="https://user-images.githubusercontent.com/68415905/224191061-afacedc6-d2af-4aba-b32a-3b3159f86a32.JPG"
         href="https://thefitville.com/"
       />
-      <HorizonVideoList title="조회수 Best10" />
-      <HorizonVideoList title="좋아요 Best10" />
+      <HorizonVideoList title="Most Viewed" />
+      <HorizonVideoList title="Most Liked" />
     </S.Wrap>
   );
 };

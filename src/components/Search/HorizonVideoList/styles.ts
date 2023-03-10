@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const VideoSection = styled.section`
   width: 100%;
+  height: 192px;
   overflow: hidden;
   margin-top: 25px;
   .swiper-wrapper {
@@ -12,7 +13,7 @@ export const VideoSection = styled.section`
     width: 210px !important;
   }
   .swiper-slide {
-    width: 115px !important;
+    width: 120px !important;
   }
   &:first-of-type svg {
     margin-bottom: -1px;

@@ -32,7 +32,7 @@ export const SearchBar = ({ addHistory, showHistory }: Props) => {
       <S.InputArea>
         <S.Input
           autoFocus
-          placeholder="검색어를 입력해주세요."
+          placeholder="Search anything you like..."
           value={input}
           onChange={handleChange}
           onClick={showHistory}

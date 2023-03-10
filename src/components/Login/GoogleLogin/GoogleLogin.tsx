@@ -11,16 +11,13 @@ export const GoogleLogin = () => {
       const res = await signInWithPopup(auth, provider);
 
       if (res) {
-        // Property 'accessToken' does not exist on type 'User'.
-        // const accessToken = res.user.accessToken;
         const profile = {
           name: res.user.displayName,
           photoURL: res.user.photoURL
         };
 
-        // sessionStorage.setItem('kicks-token', accessToken);
-        sessionStorage.setItem('kicks-user', JSON.stringify(profile));
         navigate('/');
+        sessionStorage.setItem('kicks-user', JSON.stringify(profile));
       }
     } catch (error) {
       console.log(error);

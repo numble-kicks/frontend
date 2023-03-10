@@ -22,9 +22,10 @@ export const SortByList = styled.ul`
   height: 60px;
   li {
     cursor: pointer;
-    padding: 0 10px;
+    margin: 0 10px;
     &.active {
-      font-weight: 600;
+      border-bottom: 1px solid #000;
+      font-weight: 900;
     }
   }
 `;

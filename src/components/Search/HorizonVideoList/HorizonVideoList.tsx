@@ -1,38 +1,52 @@
-import * as S from './styles';
-import { IVideoListItem } from 'types';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import { VideoLink } from 'components';
+import { IVideoListItem } from 'types';
+import { getThumbnails } from 'utils';
+
 import { GrOverview } from 'react-icons/gr';
 import { FaRegThumbsUp } from 'react-icons/fa';
-import { fetcher } from 'utils/swr';
-import useSWR from 'swr';
-import { TOP10_VIDEO_API } from 'utils/api';
+import * as S from './styles';
 
 interface Props {
   title: string;
 }
 
 export const HorizonVideoList = ({ title }: Props) => {
-  const current = title.includes('조회') ? 'hits' : 'likes';
+  const current = title.includes('Like') ? 'likes' : 'hits';
+  const [thumbnailList, setThumbnailList] = useState<IVideoListItem[]>([]);
 
-  const { data: videos } = useSWR(TOP10_VIDEO_API(current), fetcher);
+  useEffect(() => {
+    const fetcher = async () => {
+      // setLoading(true);
+
+      const thumbnails = await getThumbnails();
+      setThumbnailList(current === 'hits' ? thumbnails : thumbnails.reverse());
+
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 2500);
+    };
+    fetcher();
+  }, []);
 
   return (
     <S.VideoSection>
       <S.SectionTitle>
         {current === 'hits' ? <GrOverview /> : <FaRegThumbsUp />}
-        <span>{title}</span>
+        <span>{title.toUpperCase()}</span>
       </S.SectionTitle>
       <Swiper
-        spaceBetween={8}
+        spaceBetween={3}
         slidesPerView={2}
         scrollbar={{ draggable: true }}
       >
-        {videos &&
-          videos?.data.map(({ id, thumbnail_url }: IVideoListItem) => (
+        {thumbnailList &&
+          thumbnailList.map(({ id, url }: IVideoListItem) => (
             <SwiperSlide tag="li" key={id}>
               <VideoLink to={`/video/${id}`}>
-                <img src={thumbnail_url} alt={thumbnail_url} />
+                <img src={url} alt="thumbnail" />
               </VideoLink>
             </SwiperSlide>
           ))}

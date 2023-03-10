@@ -14,11 +14,11 @@ export const SearchResultPage = () => {
       <PageHeader title={searchedText} backTo="/search" />
       <AdBanner
         height="100px"
-        src="https://user-images.githubusercontent.com/68415905/224191061-afacedc6-d2af-4aba-b32a-3b3159f86a32.JPG"
-        href="https://thefitville.com/"
+        src="https://www.bata.in/on/demandware.static/-/Sites-bata-in-Library/default/dw5e87b827/PLP/EOSS_Dec22-Thin-M.jpg"
+        href="https://www.bata.in/sale/"
       />
       <S.SortByList>
-        {['최신순', '인기순'].map((sortBy, i) => (
+        {['Latest', 'Popular'].map((sortBy, i) => (
           <li
             key={i}
             onClick={() => setActiveIdx(i)}

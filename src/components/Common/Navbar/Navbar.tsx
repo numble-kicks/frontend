@@ -26,7 +26,7 @@ export const Navbar = () => {
     { name: 'CHAT', linkTo: '/chats', component: <ChatIcon /> },
     {
       name: 'PROFILE',
-      linkTo: `/profile/${myName.toLowerCase().replace(/ /g, '')}`,
+      linkTo: `/profile/${(myName || '').toLowerCase().replace(/ /g, '')}`,
       component: <ProfileIcon />
     }
   ];
