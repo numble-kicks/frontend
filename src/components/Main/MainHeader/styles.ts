@@ -17,13 +17,15 @@ export const Category = styled.div`
     font-size: 15px;
     line-height: 35px;
     font-weight: 600;
-    color: #555;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    color: #333;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
     padding: 0 10px;
+    opacity: 0.7;
     position: relative;
     &.active {
       color: #f3f3f3;
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+      opacity: 1;
     }
     &:last-of-type::before {
       content: '';

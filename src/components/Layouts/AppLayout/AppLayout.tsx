@@ -15,12 +15,12 @@ export const AppLayout = ({ navbar }: Props) => {
   const userId = localStorage.getItem('id');
 
   const menuList = [
-    { name: '홈', linkTo: '/', component: <HomeIcon /> },
-    { name: '검색', linkTo: '/search', component: <SearchIcon /> },
+    { name: 'HOME', linkTo: '/', component: <HomeIcon /> },
+    { name: 'SEARCH', linkTo: '/search', component: <SearchIcon /> },
     { name: '', linkTo: '/upload', component: <UploadIcon /> },
-    { name: '채팅', linkTo: '/chats', component: <ChatIcon /> },
+    { name: 'CHAT', linkTo: '/chats', component: <ChatIcon /> },
     {
-      name: '프로필',
+      name: 'PROFILE',
       linkTo: `/${username}`,
       component: <ProfileIcon />
     }

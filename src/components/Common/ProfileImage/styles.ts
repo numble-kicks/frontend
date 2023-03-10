@@ -4,7 +4,7 @@ export const ImageContainer = styled.div<{ size: string }>`
   width: ${({ size }) => size + 'px'};
   height: ${({ size }) => size + 'px'};
   border-radius: 50%;
-  border: 1px solid #e3e3e3;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   cursor: pointer;
   img {

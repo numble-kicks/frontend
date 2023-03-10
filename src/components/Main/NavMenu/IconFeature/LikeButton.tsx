@@ -81,9 +81,7 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
       ) : (
         <UnSaveIcon className="icon" onClick={handleLike} />
       )}
-      <p className="likes" style={{ color: 'black' }}>
-        {currentLikeCount}
-      </p>
+      <p className="likes">{currentLikeCount}</p>
     </S.Button>
   );
 };

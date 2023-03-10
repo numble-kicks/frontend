@@ -4,14 +4,11 @@ export const Button = styled.button`
   position: relative;
   width: 100%;
   & + & {
-    margin-top: 45px;
-  }
-  &:nth-of-type(3) {
-    margin-top: 35px;
+    margin-top: 30px;
   }
   p.likes {
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 3px;
     color: white;
   }
   .follow {

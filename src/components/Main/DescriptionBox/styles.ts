@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const Wrap = styled.div<{ isShown: boolean }>`
   left: ${({ theme }) => theme.style.edge_padding};
   position: absolute;
-  bottom: 25px;
   width: 290px;
+  bottom: ${({ isShown }) => (isShown ? '25px' : '-150px')};
+  transition: all 0.25s ease-out;
   z-index: 100;
 `;
 
-export const ContentBox = styled.div<{ isShown: boolean }>`
-  display: ${props => (props.isShown ? 'block' : 'none')};
+export const ContentBox = styled.div`
   width: 100%;
   max-height: 150px;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   color: white;
+
   .price {
     font-size: 16px;
     span {
@@ -48,15 +49,4 @@ export const ContentBox = styled.div<{ isShown: boolean }>`
     word-wrap: break-word;
     line-height: 14px;
   }
-`;
-
-export const HideBtn = styled.button`
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2px 5px;
-  font-size: 12px;
-  color: #f1f1f1;
-  border-radius: 6px;
-  margin: 4px 3px;
-  margin-left: auto;
-  display: block;
 `;

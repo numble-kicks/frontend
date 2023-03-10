@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div<{ isShown: boolean }>`
-  display: ${props => (props.isShown ? 'flex' : 'none')};
-  position: absolute;
-  right: ${({ theme }) => theme.style.edge_padding};
-  bottom: 35px;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  bottom: 90px;
+  right: ${({ isShown }) => (isShown ? '15px' : '-50px')};
+  transition: all 0.25s ease-out;
   z-index: 1000;
 `;
