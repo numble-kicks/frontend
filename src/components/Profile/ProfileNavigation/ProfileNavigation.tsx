@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import * as S from './styles';
-import { MY_LIKES_API, MY_VIDEOS_API } from 'utils/api';
 import { VideoList } from 'components';
+import { MY_LIKES_API, MY_VIDEOS_API } from 'utils/api';
+import * as S from './styles';
 
-export const ProfileNavigation = ({ userId }: { userId: number }) => {
+export const ProfileNavigation = () => {
   const [selectedMenu, setSelectedMenu] = useState<String>('uploaded');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,9 +30,9 @@ export const ProfileNavigation = ({ userId }: { userId: number }) => {
         </button>
       </S.ProfileNav>
       {selectedMenu === 'uploaded' ? (
-        <VideoList api={MY_VIDEOS_API(userId)} message="No Uploaded Videos" />
+        <VideoList api={MY_VIDEOS_API(0)} message="No Uploaded Videos" />
       ) : (
-        <VideoList api={MY_LIKES_API(userId)} message="No Liked Videos" />
+        <VideoList api={MY_LIKES_API(0)} message="No Liked Videos" />
       )}
     </S.Wrap>
   );

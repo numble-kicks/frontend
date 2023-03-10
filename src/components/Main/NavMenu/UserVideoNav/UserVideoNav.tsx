@@ -1,4 +1,4 @@
-import { ChatButton, LikeButton, ProfileFollow } from '../IconFeature';
+import { ChatButton, LikeButton, ProfileButton } from '../IconFeature';
 import { IVideoItem } from 'types';
 import * as S from './styles';
 
@@ -12,7 +12,7 @@ export const UserVideoNav = ({ isShown, videoData }: Prop) => {
 
   return (
     <S.Wrap isShown={isShown}>
-      <ProfileFollow userData={user} />
+      <ProfileButton userData={user} />
       <LikeButton videoId={id} like_count={like_count} />
       <ChatButton userId={user?.id} />
     </S.Wrap>

@@ -1,4 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { getMyData } from 'utils';
+
 import { ReactComponent as ChatIcon } from 'assets/svg/chat_nav.svg';
 import { ReactComponent as HomeIcon } from 'assets/svg/home.svg';
 import { ReactComponent as ProfileIcon } from 'assets/svg/profile.svg';
@@ -11,8 +13,7 @@ interface Props {
 }
 
 export const AppLayout = ({ navbar }: Props) => {
-  const username = localStorage.getItem('name');
-  const userId = localStorage.getItem('id');
+  const { myName } = getMyData();
 
   const menuList = [
     { name: 'HOME', linkTo: '/', component: <HomeIcon /> },
@@ -21,7 +22,7 @@ export const AppLayout = ({ navbar }: Props) => {
     { name: 'CHAT', linkTo: '/chats', component: <ChatIcon /> },
     {
       name: 'PROFILE',
-      linkTo: `/${username}`,
+      linkTo: `/profile/${myName.toLowerCase().replace(/ /g, '')}`,
       component: <ProfileIcon />
     }
   ];
@@ -36,7 +37,6 @@ export const AppLayout = ({ navbar }: Props) => {
               <NavLink
                 to={menu.linkTo}
                 className={({ isActive }) => (isActive ? 'active' : '')}
-                state={{ userId: userId }}
               >
                 <div className="icon">{menu.component}</div>
                 {menu.name && <span>{menu.name}</span>}

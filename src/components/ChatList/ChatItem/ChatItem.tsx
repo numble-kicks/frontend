@@ -23,7 +23,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
 
   return (
     <S.ChatItemContainer>
-      <ProfileImage size="50" url={userData?.profile_image_url} />
+      <ProfileImage size="50" url={userData?.photoURL} />
       <S.ChatPreview>
         <p className="chat_user">
           {iamBuyer ? sellerName : buyerName}

@@ -9,6 +9,7 @@ export const Wrap = styled.div`
   margin: 50px 0;
 
   .profile-username {
+    height: 20px;
     margin-top: 10px;
     font-size: 15px;
   }

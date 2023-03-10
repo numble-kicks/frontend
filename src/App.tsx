@@ -30,10 +30,10 @@ function App() {
           <Route path="/chats" element={<P.ChatListPage />} />
           <Route path="/notice" element={<P.NotificationPage />} />
           <Route index element={<P.MainPage />} />
-          <Route path="/:username" element={<P.ProfilePage />} />
+          <Route path="/profile/:username" element={<P.ProfilePage />} />
           <Route path="search" element={<P.SearchPage />} />
           <Route path="search_result" element={<P.SearchResultPage />} />
-          <Route path="/:username/:follow/" element={<P.FollowPage />} />
+          <Route path="/profile/:username/:follow" element={<P.FollowPage />} />
           <Route path="/video/:videoId" element={<P.PlayPage />} />
           <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
         </Route>

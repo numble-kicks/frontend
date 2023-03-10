@@ -1,35 +1,33 @@
 import { useEffect, useState } from 'react';
-import { ProfileHeader, ProfileNavigation } from 'components';
-import { useLocation, useParams } from 'react-router-dom';
-import * as S from './styles';
+import { useParams } from 'react-router-dom';
 
-interface RouteState {
-  state: {
-    userId: number;
-  };
-}
+import { ProfileHeader, ProfileNavigation } from 'components';
+import { findUser, getMyData } from 'utils';
+import { IUser } from 'types';
+
+import * as S from './styles';
 
 export const ProfilePage = () => {
   const { username } = useParams();
-  const { state } = useLocation() as RouteState;
-  const isMyPage = username === localStorage.getItem('name');
-  const myId = localStorage.getItem('id');
-  const userId = localStorage.getItem('profile-id') || state.userId + '';
-  const [current, setCurrent] = useState(Number(myId) || Number(userId));
+  const { myData, myName } = getMyData();
+  const [currentUser, setCurrentUser] = useState<IUser>();
+
+  const isMyPage = username === myName.toLowerCase().replace(/ /g, '');
+
+  console.log(currentUser);
 
   useEffect(() => {
-    if (isMyPage) {
-      setCurrent(Number(myId));
-    } else {
-      localStorage.setItem('profile-id', state ? state.userId + '' : userId);
-      setCurrent(Number(userId));
-    }
-  }, [isMyPage, myId, userId, state]);
+    const fetcher = async () => {
+      const userData = await findUser(username || '');
+      setCurrentUser(isMyPage ? myData : userData);
+    };
+    fetcher();
+  }, [isMyPage]);
 
   return (
     <S.Wrap>
-      <ProfileHeader userId={current} />
-      <ProfileNavigation userId={current} />
+      <ProfileHeader userData={currentUser} isMyPage={isMyPage} />
+      <ProfileNavigation />
     </S.Wrap>
   );
 };

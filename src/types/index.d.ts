@@ -1,7 +1,8 @@
 export interface IUser {
   id: number;
   name: string;
-  profile_image_url: string;
+  photoURL: string;
+  domain: string;
 }
 
 export interface IUserData {
@@ -57,7 +58,8 @@ export interface IVideoItem {
   user: {
     id: number;
     name: string;
-    profile_image_url: string;
+    photoURL: string;
+    domain: string;
   };
 }
 
@@ -80,7 +82,7 @@ export interface IFollow {
   member: {
     id: number;
     name: string;
-    profile_image_url: string;
+    photoURL: string;
   };
 }
 
