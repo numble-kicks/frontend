@@ -15,6 +15,7 @@ export { DeleteModal } from './Common/Modal/DeleteModal';
 export { MessageModal } from './Common/Modal/MessageModal';
 export { ProfileImage } from './Common/ProfileImage/ProfileImage';
 export { ProfileInputs } from './Common/ProfileInputs/ProfileInputs';
+export { Navbar } from './Common/Navbar/Navbar';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

@@ -8,17 +8,10 @@ import * as S from './styles';
 
 interface Props {
   videoData: IVideoItem;
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
   type?: string;
 }
 
-export const ContentsWrap = ({
-  videoData,
-  active,
-  setActive,
-  type = 'play'
-}: Props) => {
+export const ContentsWrap = ({ videoData, type = 'play' }: Props) => {
   const [isShown, setIsShown] = useState(true);
   const handleClick = () => setIsShown(!isShown);
 
