@@ -43,7 +43,7 @@ export const ButtonContainer = styled.div`
     }
 
     &.yes {
-      background-color: #c13128;
+      background-color: #4a4a52;
       color: white;
     }
 

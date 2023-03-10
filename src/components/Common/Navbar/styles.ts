@@ -38,15 +38,15 @@ export const MenuItem = styled.li`
   }
 
   rect {
-    fill: #49495f;
+    fill: #4a4a52;
   }
 
   &.active {
     span {
-      color: #49495f;
+      color: #4a4a52;
     }
     svg > *:last-child {
-      fill: #49495f;
+      fill: #4a4a52;
     }
   }
 `;

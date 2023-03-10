@@ -3,23 +3,29 @@ import * as S from './styles';
 
 interface Prop {
   setCondition: Function;
-  condition: boolean;
+  condition: string;
 }
 
 export const Condition = ({ setCondition, condition }: Prop) => {
-  const toggleIsNew = () => {
-    setCondition(!condition);
+  const handleSelect = (e: React.MouseEvent) => {
+    const target = e.target as HTMLButtonElement;
+    setCondition(target.innerHTML);
+    console.log(condition, target.innerHTML);
   };
 
   return (
-    <InputBox name="condition" title="상품 상태">
+    <InputBox name="condition" title="Condition">
       <S.Buttons>
-        <S.Button type="button" selected={condition} onClick={toggleIsNew}>
-          새상품
-        </S.Button>
-        <S.Button type="button" selected={!condition} onClick={toggleIsNew}>
-          중고
-        </S.Button>
+        {['Never worn', 'Like New', 'Used'].map((button, i) => (
+          <S.Button
+            key={i}
+            type="button"
+            onClick={handleSelect}
+            className={condition === button ? 'active' : ''}
+          >
+            {button}
+          </S.Button>
+        ))}
       </S.Buttons>
     </InputBox>
   );

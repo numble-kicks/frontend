@@ -32,6 +32,6 @@ export const SubmitButton = styled.button`
   font-size: 15px;
   border-radius: 5px;
   color: white;
-  background-color: #c13128;
+  background-color: #4a4a52;
   margin-bottom: 30px;
 `;

@@ -41,13 +41,9 @@ export const VideoInput = ({ video, setVideo }: Prop) => {
         required
       />
       <label htmlFor="videoUpload">
-        {video ? (
-            <span>{name}</span>
-        ) : (
-          <VideoUploadIcon />
-        )}
+        {video ? <span>{name}</span> : <VideoUploadIcon />}
       </label>
-      <p>영상</p>
+      <p>Video</p>
     </S.FileInputBox>
   );
 };

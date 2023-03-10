@@ -31,7 +31,7 @@ export const ImageInput = ({ img, setImg }: Prop) => {
       <label htmlFor="thumbnailUpload">
         {img ? <S.Image src={previewImg} alt="" /> : <ThumbnailUploadIcon />}
       </label>
-      <p>썸네일</p>
+      <p>Thumbnail</p>
     </S.FileInputBox>
   );
 };

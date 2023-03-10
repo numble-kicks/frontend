@@ -23,8 +23,8 @@ export const FileInputBox = styled.div`
     margin-bottom: 6px;
 
     &:hover {
-      border-color: #c13128;
-      background-color: rgba(0, 0, 0, 0.02);
+      border-color: #aaa;
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 `;

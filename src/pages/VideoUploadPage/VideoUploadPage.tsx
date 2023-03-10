@@ -21,7 +21,7 @@ export const VideoUploadPage = () => {
   const [img, setImg] = useState<any>();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
-  const [condition, setCondition] = useState(true);
+  const [condition, setCondition] = useState('Never worn');
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
 
@@ -45,7 +45,7 @@ export const VideoUploadPage = () => {
     formData.append('thumbnail', img);
     formData.append('title', title);
     formData.append('category', category);
-    formData.append('used_status', String(condition));
+    formData.append('used_status', condition);
     formData.append('price', price);
     formData.append('description', desc);
 
@@ -83,18 +83,18 @@ export const VideoUploadPage = () => {
           redirectTo={isSuccess ? '/profile' : '/'}
           isOpen={modalOpen}
         />
-        <PageHeader title="상품 등록" backTo="/" />
+        <PageHeader title="Sell an Item" backTo="/" />
         <S.Form onSubmit={handleSubmit}>
           <S.MainContainer>
             <S.FileInputContainer>
               <VideoInput setVideo={setVideo} video={video} />
               <ImageInput setImg={setImg} img={img} />
             </S.FileInputContainer>
-            <InputBox name="title" title="상품명">
+            <InputBox name="title" title="Title">
               <input
                 type="text"
                 id="title"
-                placeholder="상품명을 입력해주세요"
+                placeholder="Summary of your product"
                 required
                 onChange={handleTitle}
                 value={title}
@@ -102,25 +102,25 @@ export const VideoUploadPage = () => {
             </InputBox>
             <Category setCategory={setCategory} category={category} />
             <Condition setCondition={setCondition} condition={condition} />
-            <InputBox name="price" title="가격">
+            <InputBox name="price" title="Price (CAD)">
               <input
                 type="number"
                 id="price"
-                placeholder="가격을 입력해주세요"
+                placeholder="Add price."
                 onChange={handlePrice}
                 value={price}
                 required
               />
             </InputBox>
-            <InputBox name="description" title="상품 설명">
+            <InputBox name="description" title="Description">
               <textarea
                 id="description"
-                placeholder="상품 설명을 작성해주세요."
+                placeholder="Please describe the product you want to sell in detail."
                 onChange={handleDesc}
                 value={desc}
               />
             </InputBox>
-            <S.SubmitButton>등록하기</S.SubmitButton>
+            <S.SubmitButton>Submit</S.SubmitButton>
           </S.MainContainer>
         </S.Form>
       </S.Wrap>

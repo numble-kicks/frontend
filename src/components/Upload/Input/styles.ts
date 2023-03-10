@@ -8,11 +8,17 @@ export const Buttons = styled.div`
   justify-content: space-between;
 `;
 
-export const Button = styled.button<{ selected: boolean }>`
+export const Button = styled.button`
   height: 100%;
-  width: 165px;
-  border: 1px solid ${({ selected }) => (selected ? 'black' : '#ddd')};
+  width: 32%;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: ${({ selected }) => (selected ? 'black' : 'white')};
-  color: ${({ selected }) => (selected ? 'white' : '#ddd')};
+  background-color: #fff;
+  color: #ddd;
+
+  &.active {
+    border: 1px solid #000;
+    background-color: #4a4a52;
+    color: #f1f1f1;
+  }
 `;

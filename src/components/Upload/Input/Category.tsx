@@ -7,11 +7,11 @@ interface Prop {
 
 export const Category = ({ category, setCategory }: Prop) => {
   const categoryList = [
-    '구두/로퍼',
-    '워커/부츠',
-    '샌들/슬리퍼',
-    '스니커즈',
-    '기타'
+    'Sneakers',
+    'Boots',
+    'Heels/Loafers',
+    'Sandals/Slippers',
+    'Etc'
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -19,13 +19,13 @@ export const Category = ({ category, setCategory }: Prop) => {
   };
 
   return (
-    <InputBox name="cateogory" title="카테고리">
+    <InputBox name="cateogory" title="Category">
       <select id="category" defaultValue="" required onChange={handleChange}>
         <option value="" disabled>
-          카테고리를 선택해주세요.
+          Select the category.
         </option>
-        {categoryList.map((name) => (
-          <option key={name} value={name} >
+        {categoryList.map(name => (
+          <option key={name} value={name}>
             {name}
           </option>
         ))}

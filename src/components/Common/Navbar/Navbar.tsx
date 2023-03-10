@@ -16,7 +16,6 @@ export const Navbar = () => {
   const handleClick = (e: React.MouseEvent) => {
     const target = e.currentTarget as HTMLLIElement;
     setActive(target.id);
-    console.log(target, active);
   };
 
   const menuList = [

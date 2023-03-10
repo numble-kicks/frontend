@@ -14,8 +14,6 @@ export const ProfilePage = () => {
 
   const isMyPage = username === (myName || '').toLowerCase().replace(/ /g, '');
 
-  console.log(currentUser);
-
   useEffect(() => {
     const fetcher = async () => {
       const userData = await findUser(username || '');
