@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import * as S from './styles';
+import { useState } from 'react';
 import { VideoInput, ImageInput } from 'components';
+import * as S from './styles';
 
 export const FileUpload = () => {
   const [video, setVideo] = useState<any>();

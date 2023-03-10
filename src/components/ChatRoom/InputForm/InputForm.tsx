@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
-import * as S from './styles';
-import { ReactComponent as UploadIcon } from 'assets/svg/follow.svg';
 import { FileUpload } from 'components';
+
+import { ReactComponent as UploadIcon } from 'assets/svg/follow.svg';
+import * as S from './styles';
 
 interface Props {
   sendMessage: (text: string) => void;

@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { IChat } from 'types';
-import { MessageItem } from 'components';
+import { useEffect, useRef, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import * as S from './styles';
+
+import { MessageItem } from 'components';
 import { dividedByDate } from 'utils/dividedByDate';
-import { CHAT_ROOM_API } from 'utils/api';
-import { fetcherWithToken } from 'utils/swr';
-import useSWR from 'swr';
+import { IChat } from 'types';
+
+import * as S from './styles';
 
 interface Prop {
   profile: string;

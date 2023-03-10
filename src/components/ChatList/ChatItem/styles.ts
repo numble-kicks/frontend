@@ -38,4 +38,7 @@ export const ChatPreview = styled.div`
       position: absolute;
     }
   }
+  .last_content {
+    line-height: 1.3;
+  }
 `;

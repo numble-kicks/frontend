@@ -1,37 +1,26 @@
-import React from 'react';
-import * as S from './styles';
-import { IChat, IChatUser } from 'types';
+import { IChatUser } from 'types';
 import { dateConverter } from 'utils/dateConverter';
 import { ProfileImage } from 'components';
-import useSWR from 'swr';
-import { CHAT_ROOM_API, USER_DATA_API } from 'utils/api';
-import { fetcherWithToken } from 'utils/swr';
+import * as S from './styles';
 
 interface Prop {
   chatItem: IChatUser;
 }
 
 export const ChatItem = ({ chatItem }: Prop) => {
-  const { buyerId, buyerName, sellerId, sellerName, id } = chatItem;
-  const iamBuyer = localStorage.getItem('name') === buyerName;
-  const { data: userData } = useSWR(
-    USER_DATA_API(iamBuyer ? sellerId : buyerId),
-    fetcherWithToken
-  );
-  const { data: messages } = useSWR(CHAT_ROOM_API(id), fetcherWithToken);
-  const lastMessage = messages?.data[0] as IChat;
+  const { sellerPhotoURL, sellerName, chats } = chatItem;
 
   return (
     <S.ChatItemContainer>
-      <ProfileImage size="50" url={userData?.photoURL} />
+      <ProfileImage size="50" url={sellerPhotoURL} />
       <S.ChatPreview>
         <p className="chat_user">
-          {iamBuyer ? sellerName : buyerName}
+          {sellerName}
           <span className="last_chatted_at">
-            {dateConverter(lastMessage?.createAt)}
+            {dateConverter(chats[0].createAt || new Date())}
           </span>
         </p>
-        <p className="last_content">{lastMessage?.content}</p>
+        <p className="last_content">{chats[0].content || ''}</p>
       </S.ChatPreview>
     </S.ChatItemContainer>
   );

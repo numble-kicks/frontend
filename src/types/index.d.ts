@@ -21,9 +21,11 @@ export interface IUserData {
 export interface IChatUser {
   buyerId: number;
   buyerName: string;
-  id: number;
+  id: string;
   sellerId: number;
   sellerName: string;
+  sellerPhotoURL: string;
+  chats: IChat[];
 }
 
 export interface IChatRoom {

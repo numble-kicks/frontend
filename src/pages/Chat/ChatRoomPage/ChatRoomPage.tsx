@@ -1,37 +1,36 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import {
-  AppContainer,
-  InputForm,
-  Loading,
-  MessageList,
-  PageHeader
-} from 'components';
-import { IChat, IUser } from 'types';
-import { fetcherWithToken } from 'utils/swr';
-import useSWR from 'swr';
-import axios from 'axios';
-import * as StompJS from '@stomp/stompjs';
+import { useLocation } from 'react-router-dom';
+
+import { AppContainer, InputForm, MessageList, PageHeader } from 'components';
+import { IChat, IChatUser, IUser } from 'types';
 import { getMyData } from 'utils';
+
+import * as StompJS from '@stomp/stompjs';
 
 var client: StompJS.Client | null = null;
 
 export const ChatRoomPage = () => {
   const { myData } = getMyData();
+  const rooms = JSON.parse(sessionStorage.getItem('chats') || '{}') as {
+    [k: string]: IChatUser;
+  };
 
   const location = useLocation();
   const userData = location.state as IUser;
+  const [roomList, setRoomList] = useState<{ [k: string]: IChatUser }>(rooms);
 
-  const [messages, setMessages] = useState<IChat[]>([
-    {
-      content: `Hi, I am ${
-        userData.name.split(' ')[0]
-      }. Feel free to ask me questions.`,
-      createAt: new Date(),
-      userId: userData.id,
-      userName: userData.name
-    }
-  ]);
+  const defaultMessage = {
+    content: `Hi, I am ${
+      userData.name.split(' ')[0]
+    }. Feel free to ask me questions.`,
+    createAt: new Date(),
+    userId: userData.id,
+    userName: userData.name
+  };
+
+  const [messages, setMessages] = useState<IChat[]>(
+    rooms[userData.domain] ? rooms[userData.domain].chats : [defaultMessage]
+  );
 
   const sendMessage = (text: string) => {
     setMessages(prev => [
@@ -43,8 +42,23 @@ export const ChatRoomPage = () => {
       },
       ...prev
     ]);
-    console.log(messages);
   };
+
+  useEffect(() => {
+    setRoomList(prev => ({
+      ...prev,
+      [userData.domain]: {
+        buyerId: myData.id,
+        buyerName: myData.name,
+        sellerId: userData.id,
+        sellerName: userData.name,
+        sellerPhotoURL: userData.photoURL,
+        chats: messages,
+        id: String(new Date().getTime())
+      }
+    }));
+    sessionStorage.setItem('chats', JSON.stringify(roomList));
+  }, [userData, myData]);
 
   /* // User Data
   const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
@@ -124,10 +138,7 @@ export const ChatRoomPage = () => {
 
   return (
     <AppContainer>
-      <PageHeader
-        title={`Chat with ${userData.name || 'me'}`}
-        backTo="/chats"
-      />
+      <PageHeader title={userData.name} backTo="/chats" />
       <MessageList messages={messages} profile={userData?.photoURL} />
       <InputForm sendMessage={sendMessage} />
     </AppContainer>
