@@ -40,7 +40,7 @@ export const Input = styled.div`
     width: 100%;
     height: 30px;
     font-size: 14px;
-    padding: 5px 0;
+    padding: 5px 25px 5px 5px;
     border: none;
     background: inherit;
     font-family: inherit;

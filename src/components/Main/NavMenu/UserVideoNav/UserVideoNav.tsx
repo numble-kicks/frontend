@@ -14,7 +14,7 @@ export const UserVideoNav = ({ isShown, videoData }: Prop) => {
     <S.Wrap isShown={isShown}>
       <ProfileButton userData={user} />
       <LikeButton videoId={id} like_count={like_count} />
-      <ChatButton userId={user?.id} />
+      <ChatButton userData={user} />
     </S.Wrap>
   );
 };

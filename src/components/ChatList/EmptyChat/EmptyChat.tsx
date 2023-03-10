@@ -5,9 +5,13 @@ import * as S from './styles';
 export const EmptyChat = () => {
   return (
     <S.EmptyChatContainer>
-      <p>이야기를 나눠보세요!</p>
+      <p>
+        The chatroom is empty.
+        <br />
+        Have a chat with others.
+      </p>
       <button>
-        <Link to="/">영상 보러 가기</Link>
+        <Link to="/">Go to see items</Link>
       </button>
     </S.EmptyChatContainer>
   );

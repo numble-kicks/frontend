@@ -60,7 +60,7 @@ export const InputForm = ({ sendMessage }: Props) => {
               onChange={handleChange}
               onKeyDown={handleEnter}
               ref={textAreaRef}
-              placeholder="메세지를 입력하세요"
+              placeholder="Chat here."
             />
           </S.Input>
           {input && <S.SendButton>➤</S.SendButton>}

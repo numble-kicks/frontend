@@ -10,7 +10,10 @@ export const EmptyChatContainer = styled.div`
   p {
     font-size: 15px;
     margin-bottom: 15px;
-    font-weight: bold;
+    color: #bbb;
+    margin-top: -30px;
+    line-height: 1.3;
+    text-align: center;
   }
 
   button {

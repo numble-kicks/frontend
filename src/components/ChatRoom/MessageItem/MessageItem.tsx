@@ -1,8 +1,10 @@
-import React from 'react';
-import * as S from './styles';
-import { IChat } from 'types';
+import { ProfileImage } from 'components';
+
 import dayjs from 'dayjs';
-import { ProfileImage } from 'components/Common/ProfileImage/ProfileImage';
+import { IChat } from 'types';
+import { getMyData } from 'utils';
+
+import * as S from './styles';
 
 interface Prop {
   profile: string;
@@ -11,7 +13,7 @@ interface Prop {
 
 export const MessageItem = ({ profile, message }: Prop) => {
   const { userName, content, createAt } = message;
-  const myName = localStorage.getItem('name');
+  const { myName } = getMyData();
 
   return userName === myName ? (
     <S.MessageItemContainer className="my-message">

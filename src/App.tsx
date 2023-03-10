@@ -45,7 +45,7 @@ function App() {
           <Route path="/onboard" element={<P.OnBoardingPage />} />
           <Route path="/onboard/profile" element={<P.NewProfilePage />} />
           <Route path="/profile/edit" element={<P.ProfileEditPage />} />
-          <Route path="/chat/:id" element={<P.ChatRoomPage />} />
+          <Route path="/chat/:user" element={<P.ChatRoomPage />} />
         </Route>
 
         {/* Admin Page (Web) */}

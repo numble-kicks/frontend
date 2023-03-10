@@ -34,7 +34,7 @@ export interface IChatRoom {
 
 export interface IChat {
   content: string;
-  createAt: string;
+  createAt: Date;
   userId: number;
   userName: string;
 }

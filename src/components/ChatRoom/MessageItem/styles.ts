@@ -6,13 +6,14 @@ export const MessageItemContainer = styled.li`
   &.my-message {
     justify-content: flex-end;
     p {
+      flex: inherit;
       margin-left: 5px;
       color: ${({ theme }) => theme.color.text_white};
       background-color: ${({ theme }) => theme.color.main};
     }
   }
   p {
-    max-width: 80%;
+    flex: 1;
     margin-left: 10px;
     margin-right: 5px;
     padding: 10px 12px;
@@ -21,6 +22,7 @@ export const MessageItemContainer = styled.li`
     border-radius: 20px;
     white-space: pre-wrap;
     word-wrap: break-word;
+    word-break: break-word;
     line-height: 1.3;
   }
   span {

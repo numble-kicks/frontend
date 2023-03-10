@@ -4,7 +4,7 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
-export const dateConverter = (date: string) => {
+export const dateConverter = (date: Date) => {
   const recieved = dayjs(date).format('YYYY-MM-DD');
   const today = dayjs(new Date()).format('YYYY-MM-DD');
 

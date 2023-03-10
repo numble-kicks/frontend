@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import {
   AppContainer,
   InputForm,
@@ -7,26 +7,46 @@ import {
   MessageList,
   PageHeader
 } from 'components';
-import { IChatUser, IUserData } from 'types';
+import { IChat, IUser } from 'types';
 import { fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';
-import * as StompJS from '@stomp/stompjs';
 import axios from 'axios';
-import {
-  CHAT_LIST_API,
-  CHAT_ROOM_API,
-  USER_DATA_API,
-  GET_MESSAGE_API,
-  SEND_MESSAGE_API,
-  WS_CONNECT_API
-} from 'utils/api';
+import * as StompJS from '@stomp/stompjs';
+import { getMyData } from 'utils';
 
 var client: StompJS.Client | null = null;
 
 export const ChatRoomPage = () => {
-  const { id } = useParams();
+  const { myData } = getMyData();
 
-  // User Data
+  const location = useLocation();
+  const userData = location.state as IUser;
+
+  const [messages, setMessages] = useState<IChat[]>([
+    {
+      content: `Hi, I am ${
+        userData.name.split(' ')[0]
+      }. Feel free to ask me questions.`,
+      createAt: new Date(),
+      userId: userData.id,
+      userName: userData.name
+    }
+  ]);
+
+  const sendMessage = (text: string) => {
+    setMessages(prev => [
+      {
+        content: text,
+        createAt: new Date(),
+        userId: myData.id,
+        userName: myData.name
+      },
+      ...prev
+    ]);
+    console.log(messages);
+  };
+
+  /* // User Data
   const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
   const chatData = chats?.data as IChatUser[];
   const room = chatData?.filter(
@@ -100,15 +120,15 @@ export const ChatRoomPage = () => {
         .catch(error => console.log(error));
     }
   }, [room, id]);
+  */
 
   return (
     <AppContainer>
-      <PageHeader title={userData?.name} backTo="/chats" />
-      {userData ? (
-        <MessageList roomId={room?.id} profile={userData?.photoURL} />
-      ) : (
-        <Loading />
-      )}
+      <PageHeader
+        title={`Chat with ${userData.name || 'me'}`}
+        backTo="/chats"
+      />
+      <MessageList messages={messages} profile={userData?.photoURL} />
       <InputForm sendMessage={sendMessage} />
     </AppContainer>
   );

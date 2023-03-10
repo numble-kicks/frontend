@@ -10,18 +10,16 @@ import useSWR from 'swr';
 
 interface Prop {
   profile: string;
-  roomId: number;
+  messages: IChat[];
 }
 
-export const MessageList = ({ profile, roomId }: Prop) => {
+export const MessageList = ({ profile, messages }: Prop) => {
   const [sections, setSections] = useState<[string, IChat[]][]>([]);
   const scrollbarRef = useRef<Scrollbars>(null);
-  const { data: messages } = useSWR(CHAT_ROOM_API(roomId), fetcherWithToken);
-  const messageData = messages?.data as IChat[];
 
   useEffect(() => {
-    if (messageData) setSections(dividedByDate(messageData));
-  }, [messageData]);
+    if (messages) setSections(dividedByDate(messages));
+  }, [messages]);
 
   useEffect(() => {
     scrollbarRef.current?.scrollToBottom();
