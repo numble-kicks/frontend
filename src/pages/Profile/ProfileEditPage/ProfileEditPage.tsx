@@ -10,6 +10,7 @@ export const ProfileEditPage = () => {
   const [name, setName] = useState(userData.name);
   const [image, setImage] = useState(userData.photoURL);
 
+  const newDomain = name.toLowerCase().replace(/ /g, '');
   const isUpdated = image !== userData?.photoURL || name !== userData?.name;
 
   const handleSubmit = () => {
@@ -18,13 +19,13 @@ export const ProfileEditPage = () => {
         'kicks-user',
         JSON.stringify({ name: name, photoURL: image })
       );
-      navigate(`/profile`);
+      navigate(`/profile/${newDomain}`);
     }
   };
 
   return (
     <AppContainer>
-      <PageHeader title="프로필 수정" backTo={`/profile`} />
+      <PageHeader title="프로필 수정" backTo={`/profile/${newDomain}`} />
       <S.EditForm onSubmit={handleSubmit}>
         <ProfileInputs
           name={name}

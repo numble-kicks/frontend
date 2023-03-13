@@ -9,7 +9,7 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (isLoggedIn) navigate('/');
-  });
+  }, []);
 
   return (
     <S.Wrap>

@@ -45,7 +45,7 @@ export const HorizonVideoList = ({ title }: Props) => {
         {thumbnailList &&
           thumbnailList.map(({ id, url }: IVideoListItem) => (
             <SwiperSlide tag="li" key={id}>
-              <VideoLink to={`/video/${id}`}>
+              <VideoLink to="#">
                 <img src={url} alt="thumbnail" />
               </VideoLink>
             </SwiperSlide>

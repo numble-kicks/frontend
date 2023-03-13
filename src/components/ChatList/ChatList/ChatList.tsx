@@ -17,8 +17,6 @@ export const ChatList = ({ chatList }: Prop) => {
     return new Date(b).valueOf() - new Date(a).valueOf();
   };
 
-  console.log(Object.values(chatList));
-
   return Object.values(chatList).length ? (
     <S.ChatListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>

@@ -17,23 +17,23 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
   const [likeId, setLikeId] = useState(-1);
   const [currentLikeCount, setCurrentLikeCount] = useState(like_count);
 
-  const checkLike = async (videoId: number) => {
-    const response = await axios.get(LIKE_API(videoId), {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-      }
-    });
-    const data = await response.data;
-    if (!(data.message === '동영상 좋아요 등록 여부 조회 성공')) {
-      return;
-    }
-    setIsLiked(data.data.exist_like_video);
-    setLikeId(data.data.likes_id);
-  };
+  // const checkLike = async (videoId: number) => {
+  //   const response = await axios.get(LIKE_API(videoId), {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+  //     }
+  //   });
+  //   const data = await response.data;
+  //   if (!(data.message === '동영상 좋아요 등록 여부 조회 성공')) {
+  //     return;
+  //   }
+  //   setIsLiked(data.data.exist_like_video);
+  //   setLikeId(data.data.likes_id);
+  // };
 
-  useEffect(() => {
-    checkLike(videoId);
-  }, [videoId]);
+  // useEffect(() => {
+  //   checkLike(videoId);
+  // }, [videoId]);
 
   const handleLike = () => {
     if (!isLiked) {
@@ -49,7 +49,7 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
         .then(response => {
           if (response.data.message === '동영상에 좋아요 등록 성공') {
             setIsLiked(true);
-            checkLike(videoId);
+            // checkLike(videoId);
             setCurrentLikeCount(currentLikeCount + 1);
           }
         })

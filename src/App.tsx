@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn) navigate('/login');
-  });
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>

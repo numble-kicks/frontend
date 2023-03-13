@@ -57,8 +57,11 @@ export const ChatRoomPage = () => {
         id: String(new Date().getTime())
       }
     }));
+  }, [userData, messages]);
+
+  useEffect(() => {
     sessionStorage.setItem('chats', JSON.stringify(roomList));
-  }, [userData, myData]);
+  }, [roomList, messages]);
 
   /* // User Data
   const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
