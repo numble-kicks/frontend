@@ -23,7 +23,7 @@
 
 #### ✅ [서비스 URL 바로가기](https://numble-kicks.vercel.app)
 
-#### ✅ [github 바로가기](https://github.com/numbble)
+#### ✅ [github 바로가기](https://github.com/numble-kicks/frontend)
 
 #### ✅ [디자인 시안 (Figma) 바로가기](https://www.figma.com/file/NCOhkzgJqqmHmQt35byHvQ/4%ED%8C%80!?node-id=334%3A53)
 
